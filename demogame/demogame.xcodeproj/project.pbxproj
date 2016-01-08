@@ -1,0 +1,627 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AE496B031C3CB2C70022977A /* gameplay.png in Resources */ = {isa = PBXBuildFile; fileRef = AE496B001C3CB2C70022977A /* gameplay.png */; };
+		AE496B051C3CB2C70022977A /* gameplay1.png in Resources */ = {isa = PBXBuildFile; fileRef = AE496B021C3CB2C70022977A /* gameplay1.png */; };
+		AE496B071C3CB3B20022977A /* gameplay2.png in Resources */ = {isa = PBXBuildFile; fileRef = AE496B061C3CB3B20022977A /* gameplay2.png */; };
+		AE4A185C1C3E066300B239F2 /* JoystickButtonControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4A185B1C3E066300B239F2 /* JoystickButtonControl.m */; };
+		AE4A185E1C3E177800B239F2 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = AE4A185D1C3E177800B239F2 /* bullet.png */; };
+		AE4A18601C3E1B8C00B239F2 /* player2.png in Resources */ = {isa = PBXBuildFile; fileRef = AE4A185F1C3E1B8C00B239F2 /* player2.png */; };
+		AE4A18631C3E1EA000B239F2 /* BarrierControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4A18621C3E1EA000B239F2 /* BarrierControl.m */; };
+		AE4B2F1B1C3D1B8A00FAC961 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = AE4B2F1A1C3D1B8A00FAC961 /* home.png */; };
+		AE4D15B41C3B709E000CEA54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4D15B31C3B709E000CEA54 /* main.m */; };
+		AE4D15B71C3B709E000CEA54 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4D15B61C3B709E000CEA54 /* AppDelegate.m */; };
+		AE4D15BA1C3B709E000CEA54 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4D15B91C3B709E000CEA54 /* ViewController.m */; };
+		AE4D15BD1C3B709E000CEA54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE4D15BB1C3B709E000CEA54 /* Main.storyboard */; };
+		AE4D15BF1C3B709E000CEA54 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE4D15BE1C3B709E000CEA54 /* Images.xcassets */; };
+		AE4D15C21C3B709E000CEA54 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE4D15C01C3B709E000CEA54 /* LaunchScreen.xib */; };
+		AE4D15CE1C3B709E000CEA54 /* demogameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4D15CD1C3B709E000CEA54 /* demogameTests.m */; };
+		AE4D15D91C3B715F000CEA54 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4D15D81C3B715F000CEA54 /* Player.m */; };
+		AE4D15DC1C3B71EA000CEA54 /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4D15DB1C3B71EA000CEA54 /* Bullet.m */; };
+		AE4D15DF1C3B71FF000CEA54 /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4D15DE1C3B71FF000CEA54 /* Background.m */; };
+		AE54BC751C3F558A0011EE52 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE54BC741C3F558A0011EE52 /* DataManager.m */; };
+		AE54BC7B1C3F6C770011EE52 /* ImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE54BC7A1C3F6C770011EE52 /* ImageManager.m */; };
+		AE60D5741C3E616F00E4061C /* bulletdown.png in Resources */ = {isa = PBXBuildFile; fileRef = AE60D5711C3E616F00E4061C /* bulletdown.png */; };
+		AE60D5751C3E616F00E4061C /* bulletleft.png in Resources */ = {isa = PBXBuildFile; fileRef = AE60D5721C3E616F00E4061C /* bulletleft.png */; };
+		AE60D5761C3E616F00E4061C /* bulletright.png in Resources */ = {isa = PBXBuildFile; fileRef = AE60D5731C3E616F00E4061C /* bulletright.png */; };
+		AE60D5781C3E6C3600E4061C /* btShoot.png in Resources */ = {isa = PBXBuildFile; fileRef = AE60D5771C3E6C3600E4061C /* btShoot.png */; };
+		AE60D57B1C3E6DD500E4061C /* ButtonShoot.m in Sources */ = {isa = PBXBuildFile; fileRef = AE60D57A1C3E6DD500E4061C /* ButtonShoot.m */; };
+		AEC162A41C3FAA51001D3366 /* JoystickControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC162A31C3FAA51001D3366 /* JoystickControl.m */; };
+		AEC162A61C3FCB80001D3366 /* monster.png in Resources */ = {isa = PBXBuildFile; fileRef = AEC162A51C3FCB80001D3366 /* monster.png */; };
+		AEC162AA1C3FCC47001D3366 /* Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC162A91C3FCC47001D3366 /* Monster.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AE4D15C81C3B709E000CEA54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE4D15A61C3B709E000CEA54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE4D15AD1C3B709E000CEA54;
+			remoteInfo = demogame;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AE496B001C3CB2C70022977A /* gameplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay.png; sourceTree = "<group>"; };
+		AE496B021C3CB2C70022977A /* gameplay1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay1.png; sourceTree = "<group>"; };
+		AE496B061C3CB3B20022977A /* gameplay2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay2.png; sourceTree = "<group>"; };
+		AE4A185A1C3E066300B239F2 /* JoystickButtonControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoystickButtonControl.h; sourceTree = "<group>"; };
+		AE4A185B1C3E066300B239F2 /* JoystickButtonControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoystickButtonControl.m; sourceTree = "<group>"; };
+		AE4A185D1C3E177800B239F2 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
+		AE4A185F1C3E1B8C00B239F2 /* player2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player2.png; sourceTree = "<group>"; };
+		AE4A18611C3E1EA000B239F2 /* BarrierControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrierControl.h; sourceTree = "<group>"; };
+		AE4A18621C3E1EA000B239F2 /* BarrierControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrierControl.m; sourceTree = "<group>"; };
+		AE4B2F1A1C3D1B8A00FAC961 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		AE4D15AE1C3B709E000CEA54 /* demogame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demogame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE4D15B21C3B709E000CEA54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE4D15B31C3B709E000CEA54 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AE4D15B51C3B709E000CEA54 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AE4D15B61C3B709E000CEA54 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AE4D15B81C3B709E000CEA54 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AE4D15B91C3B709E000CEA54 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AE4D15BC1C3B709E000CEA54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AE4D15BE1C3B709E000CEA54 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AE4D15C11C3B709E000CEA54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		AE4D15C71C3B709E000CEA54 /* demogameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = demogameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE4D15CC1C3B709E000CEA54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE4D15CD1C3B709E000CEA54 /* demogameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = demogameTests.m; sourceTree = "<group>"; };
+		AE4D15D71C3B715F000CEA54 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		AE4D15D81C3B715F000CEA54 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		AE4D15DA1C3B71EA000CEA54 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
+		AE4D15DB1C3B71EA000CEA54 /* Bullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bullet.m; sourceTree = "<group>"; };
+		AE4D15DD1C3B71FF000CEA54 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
+		AE4D15DE1C3B71FF000CEA54 /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Background.m; sourceTree = "<group>"; };
+		AE54BC731C3F558A0011EE52 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		AE54BC741C3F558A0011EE52 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		AE54BC791C3F6C770011EE52 /* ImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageManager.h; sourceTree = "<group>"; };
+		AE54BC7A1C3F6C770011EE52 /* ImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManager.m; sourceTree = "<group>"; };
+		AE60D5711C3E616F00E4061C /* bulletdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bulletdown.png; sourceTree = "<group>"; };
+		AE60D5721C3E616F00E4061C /* bulletleft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bulletleft.png; sourceTree = "<group>"; };
+		AE60D5731C3E616F00E4061C /* bulletright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bulletright.png; sourceTree = "<group>"; };
+		AE60D5771C3E6C3600E4061C /* btShoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btShoot.png; sourceTree = "<group>"; };
+		AE60D5791C3E6DD500E4061C /* ButtonShoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonShoot.h; sourceTree = "<group>"; };
+		AE60D57A1C3E6DD500E4061C /* ButtonShoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonShoot.m; sourceTree = "<group>"; };
+		AEC162A21C3FAA51001D3366 /* JoystickControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoystickControl.h; sourceTree = "<group>"; };
+		AEC162A31C3FAA51001D3366 /* JoystickControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoystickControl.m; sourceTree = "<group>"; };
+		AEC162A51C3FCB80001D3366 /* monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monster.png; sourceTree = "<group>"; };
+		AEC162A81C3FCC47001D3366 /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Monster.h; sourceTree = "<group>"; };
+		AEC162A91C3FCC47001D3366 /* Monster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Monster.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE4D15AB1C3B709E000CEA54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE4D15C41C3B709E000CEA54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE4D15A51C3B709E000CEA54 = {
+			isa = PBXGroup;
+			children = (
+				AE4D15B01C3B709E000CEA54 /* demogame */,
+				AE4D15CA1C3B709E000CEA54 /* demogameTests */,
+				AE4D15AF1C3B709E000CEA54 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AE4D15AF1C3B709E000CEA54 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE4D15AE1C3B709E000CEA54 /* demogame.app */,
+				AE4D15C71C3B709E000CEA54 /* demogameTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE4D15B01C3B709E000CEA54 /* demogame */ = {
+			isa = PBXGroup;
+			children = (
+				AEC162A71C3FCC1C001D3366 /* Monster */,
+				AE54BC871C3F7C6F0011EE52 /* Image */,
+				AE54BC851C3F7BF50011EE52 /* MainView */,
+				AE54BC861C3F7C010011EE52 /* ShootControl */,
+				AE54BC841C3F7BDE0011EE52 /* DataManager */,
+				AE54BC831C3F7BC40011EE52 /* BarrierControl */,
+				AE54BC821C3F7BB50011EE52 /* JoyStickControl */,
+				AE54BC811C3F7BA30011EE52 /* BackGround */,
+				AE54BC801C3F7B980011EE52 /* Bullet */,
+				AE54BC7F1C3F7B8B0011EE52 /* Player */,
+				AE54BC7C1C3F7B500011EE52 /* ImageManager */,
+				AE4D15B11C3B709E000CEA54 /* Supporting Files */,
+			);
+			path = demogame;
+			sourceTree = "<group>";
+		};
+		AE4D15B11C3B709E000CEA54 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE4D15B21C3B709E000CEA54 /* Info.plist */,
+				AE4D15B31C3B709E000CEA54 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE4D15CA1C3B709E000CEA54 /* demogameTests */ = {
+			isa = PBXGroup;
+			children = (
+				AE4D15CD1C3B709E000CEA54 /* demogameTests.m */,
+				AE4D15CB1C3B709E000CEA54 /* Supporting Files */,
+			);
+			path = demogameTests;
+			sourceTree = "<group>";
+		};
+		AE4D15CB1C3B709E000CEA54 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE4D15CC1C3B709E000CEA54 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE54BC7C1C3F7B500011EE52 /* ImageManager */ = {
+			isa = PBXGroup;
+			children = (
+				AE54BC791C3F6C770011EE52 /* ImageManager.h */,
+				AE54BC7A1C3F6C770011EE52 /* ImageManager.m */,
+			);
+			name = ImageManager;
+			sourceTree = "<group>";
+		};
+		AE54BC7F1C3F7B8B0011EE52 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				AE4D15D71C3B715F000CEA54 /* Player.h */,
+				AE4D15D81C3B715F000CEA54 /* Player.m */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
+		AE54BC801C3F7B980011EE52 /* Bullet */ = {
+			isa = PBXGroup;
+			children = (
+				AE4D15DA1C3B71EA000CEA54 /* Bullet.h */,
+				AE4D15DB1C3B71EA000CEA54 /* Bullet.m */,
+			);
+			name = Bullet;
+			sourceTree = "<group>";
+		};
+		AE54BC811C3F7BA30011EE52 /* BackGround */ = {
+			isa = PBXGroup;
+			children = (
+				AE4D15DD1C3B71FF000CEA54 /* Background.h */,
+				AE4D15DE1C3B71FF000CEA54 /* Background.m */,
+			);
+			name = BackGround;
+			sourceTree = "<group>";
+		};
+		AE54BC821C3F7BB50011EE52 /* JoyStickControl */ = {
+			isa = PBXGroup;
+			children = (
+				AE4A185A1C3E066300B239F2 /* JoystickButtonControl.h */,
+				AE4A185B1C3E066300B239F2 /* JoystickButtonControl.m */,
+				AEC162A21C3FAA51001D3366 /* JoystickControl.h */,
+				AEC162A31C3FAA51001D3366 /* JoystickControl.m */,
+			);
+			name = JoyStickControl;
+			sourceTree = "<group>";
+		};
+		AE54BC831C3F7BC40011EE52 /* BarrierControl */ = {
+			isa = PBXGroup;
+			children = (
+				AE4A18611C3E1EA000B239F2 /* BarrierControl.h */,
+				AE4A18621C3E1EA000B239F2 /* BarrierControl.m */,
+			);
+			name = BarrierControl;
+			sourceTree = "<group>";
+		};
+		AE54BC841C3F7BDE0011EE52 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				AE54BC731C3F558A0011EE52 /* DataManager.h */,
+				AE54BC741C3F558A0011EE52 /* DataManager.m */,
+			);
+			name = DataManager;
+			sourceTree = "<group>";
+		};
+		AE54BC851C3F7BF50011EE52 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				AE4D15B51C3B709E000CEA54 /* AppDelegate.h */,
+				AE4D15B61C3B709E000CEA54 /* AppDelegate.m */,
+				AE4D15B81C3B709E000CEA54 /* ViewController.h */,
+				AE4D15B91C3B709E000CEA54 /* ViewController.m */,
+				AE4D15BB1C3B709E000CEA54 /* Main.storyboard */,
+				AE4D15BE1C3B709E000CEA54 /* Images.xcassets */,
+				AE4D15C01C3B709E000CEA54 /* LaunchScreen.xib */,
+			);
+			name = MainView;
+			sourceTree = "<group>";
+		};
+		AE54BC861C3F7C010011EE52 /* ShootControl */ = {
+			isa = PBXGroup;
+			children = (
+				AE60D5791C3E6DD500E4061C /* ButtonShoot.h */,
+				AE60D57A1C3E6DD500E4061C /* ButtonShoot.m */,
+			);
+			name = ShootControl;
+			sourceTree = "<group>";
+		};
+		AE54BC871C3F7C6F0011EE52 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				AEC162A51C3FCB80001D3366 /* monster.png */,
+				AE60D5771C3E6C3600E4061C /* btShoot.png */,
+				AE60D5711C3E616F00E4061C /* bulletdown.png */,
+				AE60D5721C3E616F00E4061C /* bulletleft.png */,
+				AE60D5731C3E616F00E4061C /* bulletright.png */,
+				AE4A185F1C3E1B8C00B239F2 /* player2.png */,
+				AE4A185D1C3E177800B239F2 /* bullet.png */,
+				AE4B2F1A1C3D1B8A00FAC961 /* home.png */,
+				AE496B061C3CB3B20022977A /* gameplay2.png */,
+				AE496B001C3CB2C70022977A /* gameplay.png */,
+				AE496B021C3CB2C70022977A /* gameplay1.png */,
+			);
+			name = Image;
+			sourceTree = "<group>";
+		};
+		AEC162A71C3FCC1C001D3366 /* Monster */ = {
+			isa = PBXGroup;
+			children = (
+				AEC162A81C3FCC47001D3366 /* Monster.h */,
+				AEC162A91C3FCC47001D3366 /* Monster.m */,
+			);
+			name = Monster;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE4D15AD1C3B709E000CEA54 /* demogame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE4D15D11C3B709E000CEA54 /* Build configuration list for PBXNativeTarget "demogame" */;
+			buildPhases = (
+				AE4D15AA1C3B709E000CEA54 /* Sources */,
+				AE4D15AB1C3B709E000CEA54 /* Frameworks */,
+				AE4D15AC1C3B709E000CEA54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = demogame;
+			productName = demogame;
+			productReference = AE4D15AE1C3B709E000CEA54 /* demogame.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AE4D15C61C3B709E000CEA54 /* demogameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE4D15D41C3B709E000CEA54 /* Build configuration list for PBXNativeTarget "demogameTests" */;
+			buildPhases = (
+				AE4D15C31C3B709E000CEA54 /* Sources */,
+				AE4D15C41C3B709E000CEA54 /* Frameworks */,
+				AE4D15C51C3B709E000CEA54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE4D15C91C3B709E000CEA54 /* PBXTargetDependency */,
+			);
+			name = demogameTests;
+			productName = demogameTests;
+			productReference = AE4D15C71C3B709E000CEA54 /* demogameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE4D15A61C3B709E000CEA54 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "HTK-Hoa";
+				TargetAttributes = {
+					AE4D15AD1C3B709E000CEA54 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					AE4D15C61C3B709E000CEA54 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = AE4D15AD1C3B709E000CEA54;
+					};
+				};
+			};
+			buildConfigurationList = AE4D15A91C3B709E000CEA54 /* Build configuration list for PBXProject "demogame" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AE4D15A51C3B709E000CEA54;
+			productRefGroup = AE4D15AF1C3B709E000CEA54 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE4D15AD1C3B709E000CEA54 /* demogame */,
+				AE4D15C61C3B709E000CEA54 /* demogameTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE4D15AC1C3B709E000CEA54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE496B051C3CB2C70022977A /* gameplay1.png in Resources */,
+				AEC162A61C3FCB80001D3366 /* monster.png in Resources */,
+				AE4B2F1B1C3D1B8A00FAC961 /* home.png in Resources */,
+				AE4D15BD1C3B709E000CEA54 /* Main.storyboard in Resources */,
+				AE60D5741C3E616F00E4061C /* bulletdown.png in Resources */,
+				AE60D5761C3E616F00E4061C /* bulletright.png in Resources */,
+				AE60D5781C3E6C3600E4061C /* btShoot.png in Resources */,
+				AE60D5751C3E616F00E4061C /* bulletleft.png in Resources */,
+				AE496B031C3CB2C70022977A /* gameplay.png in Resources */,
+				AE4A185E1C3E177800B239F2 /* bullet.png in Resources */,
+				AE496B071C3CB3B20022977A /* gameplay2.png in Resources */,
+				AE4A18601C3E1B8C00B239F2 /* player2.png in Resources */,
+				AE4D15C21C3B709E000CEA54 /* LaunchScreen.xib in Resources */,
+				AE4D15BF1C3B709E000CEA54 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE4D15C51C3B709E000CEA54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE4D15AA1C3B709E000CEA54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE54BC7B1C3F6C770011EE52 /* ImageManager.m in Sources */,
+				AEC162A41C3FAA51001D3366 /* JoystickControl.m in Sources */,
+				AEC162AA1C3FCC47001D3366 /* Monster.m in Sources */,
+				AE4D15DC1C3B71EA000CEA54 /* Bullet.m in Sources */,
+				AE54BC751C3F558A0011EE52 /* DataManager.m in Sources */,
+				AE4D15DF1C3B71FF000CEA54 /* Background.m in Sources */,
+				AE4D15D91C3B715F000CEA54 /* Player.m in Sources */,
+				AE60D57B1C3E6DD500E4061C /* ButtonShoot.m in Sources */,
+				AE4A18631C3E1EA000B239F2 /* BarrierControl.m in Sources */,
+				AE4A185C1C3E066300B239F2 /* JoystickButtonControl.m in Sources */,
+				AE4D15BA1C3B709E000CEA54 /* ViewController.m in Sources */,
+				AE4D15B71C3B709E000CEA54 /* AppDelegate.m in Sources */,
+				AE4D15B41C3B709E000CEA54 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE4D15C31C3B709E000CEA54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE4D15CE1C3B709E000CEA54 /* demogameTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AE4D15C91C3B709E000CEA54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE4D15AD1C3B709E000CEA54 /* demogame */;
+			targetProxy = AE4D15C81C3B709E000CEA54 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AE4D15BB1C3B709E000CEA54 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE4D15BC1C3B709E000CEA54 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AE4D15C01C3B709E000CEA54 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE4D15C11C3B709E000CEA54 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AE4D15CF1C3B709E000CEA54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AE4D15D01C3B709E000CEA54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AE4D15D21C3B709E000CEA54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = demogame/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AE4D15D31C3B709E000CEA54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = demogame/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AE4D15D51C3B709E000CEA54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = demogameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/demogame.app/demogame";
+			};
+			name = Debug;
+		};
+		AE4D15D61C3B709E000CEA54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = demogameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/demogame.app/demogame";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE4D15A91C3B709E000CEA54 /* Build configuration list for PBXProject "demogame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE4D15CF1C3B709E000CEA54 /* Debug */,
+				AE4D15D01C3B709E000CEA54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE4D15D11C3B709E000CEA54 /* Build configuration list for PBXNativeTarget "demogame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE4D15D21C3B709E000CEA54 /* Debug */,
+				AE4D15D31C3B709E000CEA54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE4D15D41C3B709E000CEA54 /* Build configuration list for PBXNativeTarget "demogameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE4D15D51C3B709E000CEA54 /* Debug */,
+				AE4D15D61C3B709E000CEA54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AE4D15A61C3B709E000CEA54 /* Project object */;
+}
