@@ -13,7 +13,7 @@
 
 @interface JoystickButtonControl : UIImageView
 
--(void)createJoystickButton;
--(void)joystickLongPressGestureRecognizer;
+- (void)createJoystickButton;
+- (void)joystickLongPressGestureRecognizer;
 
 @end

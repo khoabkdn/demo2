@@ -11,5 +11,5 @@
 #import "Player.h"
 
 @interface Bullet : UIImageView
--(void)createBullet;
+- (void)createBullet;
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B43379B1C43A4D8008632DA /* CollisionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B43379A1C43A4D8008632DA /* CollisionController.m */; };
 		AE496B031C3CB2C70022977A /* gameplay.png in Resources */ = {isa = PBXBuildFile; fileRef = AE496B001C3CB2C70022977A /* gameplay.png */; };
 		AE496B051C3CB2C70022977A /* gameplay1.png in Resources */ = {isa = PBXBuildFile; fileRef = AE496B021C3CB2C70022977A /* gameplay1.png */; };
 		AE496B071C3CB3B20022977A /* gameplay2.png in Resources */ = {isa = PBXBuildFile; fileRef = AE496B061C3CB3B20022977A /* gameplay2.png */; };
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B4337991C43A4D8008632DA /* CollisionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionController.h; sourceTree = "<group>"; };
+		7B43379A1C43A4D8008632DA /* CollisionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollisionController.m; sourceTree = "<group>"; };
 		AE496B001C3CB2C70022977A /* gameplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay.png; sourceTree = "<group>"; };
 		AE496B021C3CB2C70022977A /* gameplay1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay1.png; sourceTree = "<group>"; };
 		AE496B061C3CB3B20022977A /* gameplay2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay2.png; sourceTree = "<group>"; };
@@ -112,6 +115,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B4337981C43A47B008632DA /* CollisionControl */ = {
+			isa = PBXGroup;
+			children = (
+				7B4337991C43A4D8008632DA /* CollisionController.h */,
+				7B43379A1C43A4D8008632DA /* CollisionController.m */,
+			);
+			name = CollisionControl;
+			sourceTree = "<group>";
+		};
 		AE4D15A51C3B709E000CEA54 = {
 			isa = PBXGroup;
 			children = (
@@ -133,16 +145,16 @@
 		AE4D15B01C3B709E000CEA54 /* demogame */ = {
 			isa = PBXGroup;
 			children = (
+				7B4337981C43A47B008632DA /* CollisionControl */,
+				AE54BC851C3F7BF50011EE52 /* MainView */,
+				AE54BC7F1C3F7B8B0011EE52 /* Player */,
+				AE54BC801C3F7B980011EE52 /* Bullet */,
 				AEC162A71C3FCC1C001D3366 /* Monster */,
 				AE54BC871C3F7C6F0011EE52 /* Image */,
-				AE54BC851C3F7BF50011EE52 /* MainView */,
 				AE54BC861C3F7C010011EE52 /* ShootControl */,
-				AE54BC841C3F7BDE0011EE52 /* DataManager */,
 				AE54BC831C3F7BC40011EE52 /* BarrierControl */,
 				AE54BC821C3F7BB50011EE52 /* JoyStickControl */,
 				AE54BC811C3F7BA30011EE52 /* BackGround */,
-				AE54BC801C3F7B980011EE52 /* Bullet */,
-				AE54BC7F1C3F7B8B0011EE52 /* Player */,
 				AE54BC7C1C3F7B500011EE52 /* ImageManager */,
 				AE4D15B11C3B709E000CEA54 /* Supporting Files */,
 			);
@@ -266,6 +278,7 @@
 		AE54BC871C3F7C6F0011EE52 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				AE54BC841C3F7BDE0011EE52 /* DataManager */,
 				AEC162A51C3FCB80001D3366 /* monster.png */,
 				AE60D5771C3E6C3600E4061C /* btShoot.png */,
 				AE60D5711C3E616F00E4061C /* bulletdown.png */,
@@ -334,7 +347,7 @@
 		AE4D15A61C3B709E000CEA54 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "HTK-Hoa";
 				TargetAttributes = {
 					AE4D15AD1C3B709E000CEA54 = {
@@ -413,6 +426,7 @@
 				AE4A185C1C3E066300B239F2 /* JoystickButtonControl.m in Sources */,
 				AE4D15BA1C3B709E000CEA54 /* ViewController.m in Sources */,
 				AE4D15B71C3B709E000CEA54 /* AppDelegate.m in Sources */,
+				7B43379B1C43A4D8008632DA /* CollisionController.m in Sources */,
 				AE4D15B41C3B709E000CEA54 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,6 +490,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -543,6 +558,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = demogame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "hoa.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -553,6 +569,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = demogame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "hoa.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -571,6 +588,7 @@
 				);
 				INFOPLIST_FILE = demogameTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "hoa.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/demogame.app/demogame";
 			};
@@ -586,6 +604,7 @@
 				);
 				INFOPLIST_FILE = demogameTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "hoa.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/demogame.app/demogame";
 			};

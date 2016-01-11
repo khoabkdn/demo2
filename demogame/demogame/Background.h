@@ -10,5 +10,5 @@
 #import <Foundation/Foundation.h>
 
 @interface Background : NSObject
-+(void)setBacgroundWithImageName:(NSString *)imageString view:(UIView *)view;
++ (void)setBacgroundWithImageName:(NSString *)imageString view:(UIView *)view;
 @end

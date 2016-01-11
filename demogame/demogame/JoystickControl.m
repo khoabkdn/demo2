@@ -10,10 +10,12 @@
 #import "DataManager.h"
 
 @implementation JoystickControl
+
 -(void)createJoystick{
     UIImage *im = self.image;
     self.frame = CGRectMake([DataManager shared].view.frame.size.width-im.size.width, [DataManager shared].view.frame.size.height-im.size.height, im.size.width, im.size.height);
     self.alpha = 0.45;
     [[DataManager shared].view addSubview:self];
 }
+
 @end

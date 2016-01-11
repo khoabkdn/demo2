@@ -12,12 +12,11 @@
 @interface Player : UIImageView
 
 @property(nonatomic) int check;
+@property(strong,nonatomic) NSMutableArray *imageArrLeft;
+@property(strong,nonatomic) NSMutableArray *imageArrRight;
+@property(strong,nonatomic) NSMutableArray *imageArrUp;
+@property(strong,nonatomic) NSMutableArray *imageArrDown;
 
--(NSArray *)loadImageLeftOfPlayer;
--(NSArray *)loadImageRightOfPlayer;
--(NSArray *)loadImageUpOfPlayer;
--(NSArray *)loadImageDownOfPlayer;
--(void)createPlayer;
--(void)typeRun:(NSArray *)imageArr;
+- (void)createPlayer;
 
 @end

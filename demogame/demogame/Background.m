@@ -9,7 +9,7 @@
 #import "Background.h"
 
 @implementation Background
-+(void)setBacgroundWithImageName:(NSString *)imageString view:(UIView *)view{
++ (void)setBacgroundWithImageName:(NSString *)imageString view:(UIView *)view {
     UIGraphicsBeginImageContext(view.frame.size);
     [[UIImage imageNamed:imageString] drawInRect: view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();

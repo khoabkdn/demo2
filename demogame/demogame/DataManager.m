@@ -9,7 +9,7 @@
 #import "DataManager.h"
 
 @implementation DataManager
-+(DataManager *)shared{
++ (DataManager *)shared {
     static DataManager *shared = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -17,8 +17,10 @@
     });
     return shared;
 }
--(instancetype)init{
+- (instancetype)init {
     self = [super init];
+    _arrBullet = [[NSMutableArray alloc] init];
+    _arrMonster = [[NSMutableArray alloc] init];
     return self;
 }
 @end

@@ -11,33 +11,39 @@
 
 @interface JoystickButtonControl ()
 
+@property int check;
 @property NSTimer *timer;
 
 @end
 
 @implementation JoystickButtonControl
 
--(void)createJoystickButton{
+- (void)createJoystickButton {
     UIImage *im = self.image;
     self.frame = CGRectMake([DataManager shared].joystick.center.x-im.size.width/2, [DataManager shared].joystick.center.y-im.size.height/2, im.size.width, im.size.height);
+    self.alpha = 0.65;
     [[DataManager shared].view addSubview:self];
+    [DataManager shared].player.animationDuration = 1;
     [self joystickLongPressGestureRecognizer];
 }
--(void)joystickLongPressGestureRecognizer{
+
+- (void)joystickLongPressGestureRecognizer {
     //su kien nhan
     UILongPressGestureRecognizer *joystickRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleJoystickGame:)];
     self.userInteractionEnabled = true;
     joystickRecognizer.minimumPressDuration = 0.01;
     [self addGestureRecognizer:joystickRecognizer];
 }
-- (void)handleJoystickGame:(UILongPressGestureRecognizer *)recognizer{
+
+- (void)handleJoystickGame:(UILongPressGestureRecognizer *)recognizer {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         if (_timer == nil) {
+            
             _timer = [NSTimer scheduledTimerWithTimeInterval:0.05
-                                                     target:self
-                                                   selector:@selector(run)
-                                                   userInfo:recognizer
-                                                    repeats:YES];
+                                                      target:self
+                                                    selector:@selector(run)
+                                                    userInfo:recognizer
+                                                     repeats:YES];
             
         }
     }
@@ -59,7 +65,8 @@
         }
     }
 }
--(void)run{
+
+- (void)run {
     UIView *view = [DataManager shared].view;
     UIImageView *joystick = [DataManager shared].joystick;
     Player *player = [DataManager shared].player;
@@ -84,17 +91,50 @@
     float sin = (ypoint-ycenter)/sqrtf(powf((xcenter-xpoint), 2)+powf((ycenter-ypoint), 2));
     float cos = (xpoint-xcenter)/sqrtf(powf((xcenter-xpoint), 2)+powf((ycenter-ypoint), 2));
     if (acosf(cos)<3*M_PI/4&&acosf(cos)>M_PI/4&&asinf(sin)<0) {
-        [player typeRun:[player loadImageUpOfPlayer]];
         player.check = 2;
+        if (_check == player.check) {
+            if (![player isAnimating]) {
+                player.animationImages = player.imageArrUp;
+                [player startAnimating];
+            }
+        }else{
+            player.animationImages = player.imageArrUp;
+            _check = player.check;
+        }
     } else if (acosf(cos)<3*M_PI/4&&acosf(cos)>M_PI/4&&asinf(sin)>0){
-        [player typeRun:[player loadImageDownOfPlayer]];
         player.check = 3;
+        if (_check == player.check) {
+            if (![player isAnimating]) {
+                player.animationImages = player.imageArrDown;
+                [player startAnimating];
+            }
+        }else{
+            player.animationImages = player.imageArrDown;
+            _check = player.check;
+        }
+        
     } else if (acosf(cos)<5*M_PI/4&&acosf(cos)>3*M_PI/4){
-        [player typeRun:[player loadImageLeftOfPlayer]];
         player.check = 4;
+        if (_check == player.check) {
+            if (![player isAnimating]) {
+                player.animationImages = player.imageArrLeft;
+                [player startAnimating];
+            }
+        }else{
+            player.animationImages = player.imageArrLeft;
+            _check = player.check;
+        }
     } else{
-        [player typeRun:[player loadImageRightOfPlayer]];
         player.check = 5;
+        if (_check == player.check) {
+            if (![player isAnimating]) {
+                player.animationImages = player.imageArrRight;
+                [player startAnimating];
+            }
+        }else{
+            player.animationImages = player.imageArrRight;
+            _check = player.check;
+        }
     }
     //di chuyen nguoi choi
     CGRect newframe = player.frame;

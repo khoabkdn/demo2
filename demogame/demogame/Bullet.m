@@ -8,6 +8,7 @@
 
 #import "Bullet.h"
 #import "DataManager.h"
+#import "CollisionController.h"
 
 @interface Bullet ()
 
@@ -17,7 +18,7 @@
 @end
 
 @implementation Bullet
-- (void)createBullet{
+- (void)createBullet {
     int check = [DataManager shared].player.check;
     UIImageView *player = [DataManager shared].player;
     float xplayer = player.frame.origin.x;
@@ -46,57 +47,66 @@
     [view addSubview:self];
     [self startBullet];
 }
--(void)startBullet{
+- (void)startBullet {
     //tao vong lap
     CADisplayLink *dl = [CADisplayLink displayLinkWithTarget:self selector:@selector(timeCallBack:)];
     dl.frameInterval = 1;
     [dl addToRunLoop:[NSRunLoop mainRunLoop] forMode: NSDefaultRunLoopMode];
     _display = dl;
 }
--(void)timeCallBack:(CADisplayLink *)sender{
+- (void)timeCallBack:(CADisplayLink *)sender {
     int check = [DataManager shared].player.check;
     CGRect tempFrame = self.frame;
     if (tempFrame.origin.y<=0) {
-        [_display removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+        [sender removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
         [self removeFromSuperview];
+        [[DataManager shared].arrBullet removeObject:self];
     }else{
         //di chuyen dan theo huong
         if (!_check) {
             if (check == 2) {
-                tempFrame.origin.y-=2;
+                tempFrame.origin.y-=5;
                 self.frame = tempFrame;
                 _check=2;
             }else if (check == 3) {
-                tempFrame.origin.y+=2;
+                tempFrame.origin.y+=5;
                 self.frame = tempFrame;
                 _check=3;
             }else  if (check == 4) {
-                tempFrame.origin.x-=2;
+                tempFrame.origin.x-=5;
                 self.frame = tempFrame;
                 _check=4;
             } else{
-                tempFrame.origin.x+=2;
+                tempFrame.origin.x+=5;
                 self.frame = tempFrame;
                 _check=5;
             }
         }else{
             [self run:tempFrame];
         }
-        
+        for (int i = 0; i<[DataManager shared].arrMonster.count; i++) {
+            if ([CollisionController checkCollisionObjectA:self andObjectB:[[DataManager shared].arrMonster objectAtIndex:i]]||[CollisionController checkCollisionObjectA:[[DataManager shared].arrMonster objectAtIndex:i] andObjectB:self]) {
+                [sender removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+                [self removeFromSuperview];
+                [[DataManager shared].arrBullet removeObject:self];
+                [[[DataManager shared].arrMonster objectAtIndex:i] removeFromSuperview];
+                [[DataManager shared].arrMonster removeObject:[[DataManager shared].arrMonster objectAtIndex:i]];
+            }
+        }
     }
 }
--(void)run:(CGRect)tempFrame{
+- (void)run:(CGRect)tempFrame {
     if (_check == 2) {
-        tempFrame.origin.y-=2;
+        tempFrame.origin.y-=5;
         self.frame = tempFrame;
     }else if (_check == 3) {
-        tempFrame.origin.y+=2;
+        tempFrame.origin.y+=5;
         self.frame = tempFrame;
     }else  if (_check == 4) {
-        tempFrame.origin.x-=2;
+        tempFrame.origin.x-=5;
         self.frame = tempFrame;
     } else{
-        tempFrame.origin.x+=2;
+        tempFrame.origin.x+=5;
         self.frame = tempFrame;
     }
 }

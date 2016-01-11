@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface Monster : NSObject
+@interface Monster : UIImageView
+
+@property int way;
+@property CGRect pointStart;
+@property int distanceMove;
+@property (strong,nonatomic)CADisplayLink *display;
+@property BOOL checkWay;
+
+
+- (void)createMonster;
 
 @end
