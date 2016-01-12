@@ -13,6 +13,11 @@
 
 @property int check;
 @property NSTimer *timer;
+@property UIView *view;
+@property UIImageView *joystick;
+@property Player *player;
+@property float sin;
+@property float cos;
 
 @end
 
@@ -24,11 +29,15 @@
     self.alpha = 0.65;
     [[DataManager shared].view addSubview:self];
     [DataManager shared].player.animationDuration = 1;
+    _view = [DataManager shared].view;
+    _joystick = [DataManager shared].joystick;
+    _player = [DataManager shared].player;
     [self joystickLongPressGestureRecognizer];
 }
 
 - (void)joystickLongPressGestureRecognizer {
     //su kien nhan
+    
     UILongPressGestureRecognizer *joystickRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleJoystickGame:)];
     self.userInteractionEnabled = true;
     joystickRecognizer.minimumPressDuration = 0.01;
@@ -41,18 +50,15 @@
         [[DataManager shared].player startAnimating];
     }
     if (recognizer.state == UIGestureRecognizerStateChanged) {
-        UIView *view = [DataManager shared].view;
-        UIImageView *joystick = [DataManager shared].joystick;
-        Player *player = [DataManager shared].player;
-        CGPoint point = [recognizer locationInView:view];
-        float xcenter = joystick.center.x;
-        float ycenter = joystick.center.y;
+        CGPoint point = [recognizer locationInView:_view];
+        float xcenter = _joystick.center.x;
+        float ycenter = _joystick.center.y;
         float xpoint = point.x;
         float ypoint = point.y;
         float r = sqrtf(powf((xcenter-xpoint), 2)+powf((ycenter-ypoint), 2));
-        float sin = (ypoint-ycenter)/r;
-        float cos = (xpoint-xcenter)/r;
-        float alpha = acosf(cos)*180/M_PI;
+        _sin = (ypoint-ycenter)/r;
+        _cos = (xpoint-xcenter)/r;
+        float alpha = acosf(_cos)*180/M_PI;
         if (sin<=0) {
             alpha = 360-alpha;
         }
@@ -66,23 +72,23 @@
         } else{
             _check = 5;
         }
-        if ((_check != player.check)) {
-            player.check = _check;
+        if ((_check != _player.check)) {
+            _player.check = _check;
             switch (_check) {
                 case 2:
-                    player.animationImages = player.imageArrUp;
+                    _player.animationImages = _player.imageArrUp;
                     break;
                 case 3:
-                    player.animationImages = player.imageArrDown;
+                    _player.animationImages = _player.imageArrDown;
                     break;
                 case 4:
-                    player.animationImages = player.imageArrLeft;
+                    _player.animationImages = _player.imageArrLeft;
                     break;
                 default:
-                    player.animationImages = player.imageArrRight;
+                    _player.animationImages = _player.imageArrRight;
                     break;
             }
-            [player startAnimating];
+            [_player startAnimating];
         }
         if (_timer == nil) {
             _timer = [NSTimer scheduledTimerWithTimeInterval:0.05
@@ -116,40 +122,30 @@
 }
 
 - (void)run {
-    UIView *view = [DataManager shared].view;
-    UIImageView *joystick = [DataManager shared].joystick;
-    Player *player = [DataManager shared].player;
     UILongPressGestureRecognizer *recognizer = _timer.userInfo;
-    CGPoint point = [recognizer locationInView:view];
+    CGPoint point = [recognizer locationInView:_view];
     CGRect newJoyFrame = self.frame;
     //di chuyen joysticbutton
     float xjoy = point.x-self.frame.size.width/2;
     float yjoy = point.y-self.frame.size.height/2;
-    if (xjoy>=joystick.frame.origin.x&&xjoy<=view.frame.size.width-self.frame.size.width) {
+    if (xjoy>=_joystick.frame.origin.x&&xjoy<=_view.frame.size.width-self.frame.size.width) {
         newJoyFrame.origin.x = xjoy;
     }
-    if (yjoy>=joystick.frame.origin.y&&yjoy<=view.frame.size.height-self.frame.size.height) {
+    if (yjoy>=_joystick.frame.origin.y&&yjoy<=_view.frame.size.height-self.frame.size.height) {
         newJoyFrame.origin.y = yjoy;
     }
     self.frame = newJoyFrame;
-    float xcenter = joystick.center.x;
-    float ycenter = joystick.center.y;
-    float xpoint = point.x;
-    float ypoint = point.y;
-    float r = sqrtf(powf((xcenter-xpoint), 2)+powf((ycenter-ypoint), 2));
-    float sin = (ypoint-ycenter)/r;
-    float cos = (xpoint-xcenter)/r;
     //di chuyen nguoi choi
-    CGRect newframe = player.frame;
-    float x = player.frame.origin.x+3*cos;
-    float y = player.frame.origin.y+3*sin;
-    if (x>=0&&x<=(view.frame.size.width-player.frame.size.width)) {
+    CGRect newframe = _player.frame;
+    float x = _player.frame.origin.x+3*_cos;
+    float y = _player.frame.origin.y+3*_sin;
+    if (x>=0&&x<=(_view.frame.size.width-_player.frame.size.width)) {
         newframe.origin.x = x;
     }
-    if (y>=0&&y<=(view.frame.size.height-player.frame.size.height)) {
+    if (y>=0&&y<=(_view.frame.size.height-_player.frame.size.height)) {
         newframe.origin.y = y;
     }
-    player.frame = newframe;
+    _player.frame = newframe;
 }
 
 @end
