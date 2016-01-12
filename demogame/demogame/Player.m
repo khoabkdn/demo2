@@ -35,4 +35,7 @@
     }
 }
 
+- (void)removePlayer {
+    [self removeFromSuperview];
+}
 @end

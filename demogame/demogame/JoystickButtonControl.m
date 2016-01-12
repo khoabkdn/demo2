@@ -37,8 +37,54 @@
 
 - (void)handleJoystickGame:(UILongPressGestureRecognizer *)recognizer {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-        if (_timer == nil) {
+        [DataManager shared].player.animationImages = [DataManager shared].player.imageArrUp;
+        [[DataManager shared].player startAnimating];
+    }
+    if (recognizer.state == UIGestureRecognizerStateChanged) {
+        UIView *view = [DataManager shared].view;
+        UIImageView *joystick = [DataManager shared].joystick;
+        Player *player = [DataManager shared].player;
+        CGPoint point = [recognizer locationInView:view];
+        float xcenter = joystick.center.x;
+        float ycenter = joystick.center.y;
+        float xpoint = point.x;
+        float ypoint = point.y;
+        float r = sqrtf(powf((xcenter-xpoint), 2)+powf((ycenter-ypoint), 2));
+        float sin = (ypoint-ycenter)/r;
+        float cos = (xpoint-xcenter)/r;
+        float alpha = acosf(cos)*180/M_PI;
+        if (sin<=0) {
+            alpha = 360-alpha;
+        }
+        if (alpha<315&&alpha>=225) {
+            _check = 2;
+        } else if (alpha>=45&&alpha<135){
+            _check = 3;
             
+        } else if (alpha>=135&&alpha<225){
+            _check = 4;
+        } else{
+            _check = 5;
+        }
+        if ((_check != player.check)) {
+            player.check = _check;
+            switch (_check) {
+                case 2:
+                    player.animationImages = player.imageArrUp;
+                    break;
+                case 3:
+                    player.animationImages = player.imageArrDown;
+                    break;
+                case 4:
+                    player.animationImages = player.imageArrLeft;
+                    break;
+                default:
+                    player.animationImages = player.imageArrRight;
+                    break;
+            }
+            [player startAnimating];
+        }
+        if (_timer == nil) {
             _timer = [NSTimer scheduledTimerWithTimeInterval:0.05
                                                       target:self
                                                     selector:@selector(run)
@@ -52,16 +98,19 @@
         _timer = nil;
         [[DataManager shared].player stopAnimating];
         //set image when stop.
-        if ([DataManager shared].player.check == 2) {
-            [DataManager shared].player.image = [[DataManager shared].arrImagePlayer objectAtIndex:12];
-            
-        }else if ([DataManager shared].player.check == 3) {
-            [DataManager shared].player.image = [[DataManager shared].arrImagePlayer objectAtIndex:0];
-            
-        }else  if ([DataManager shared].player.check == 4) {
-            [DataManager shared].player.image = [[DataManager shared].arrImagePlayer objectAtIndex:4];
-        } else{
-            [DataManager shared].player.image = [[DataManager shared].arrImagePlayer objectAtIndex:8];
+        switch ([DataManager shared].player.check) {
+            case 2:
+                [DataManager shared].player.image = [[DataManager shared].arrImagePlayer objectAtIndex:12];
+                break;
+            case 3:
+                [DataManager shared].player.image = [[DataManager shared].arrImagePlayer objectAtIndex:0];
+                break;
+            case 4:
+                [DataManager shared].player.image = [[DataManager shared].arrImagePlayer objectAtIndex:4];
+                break;
+            default:
+                [DataManager shared].player.image = [[DataManager shared].arrImagePlayer objectAtIndex:8];
+                break;
         }
     }
 }
@@ -83,59 +132,13 @@
         newJoyFrame.origin.y = yjoy;
     }
     self.frame = newJoyFrame;
-    //set animation image ung voi huong di chuyen
     float xcenter = joystick.center.x;
     float ycenter = joystick.center.y;
     float xpoint = point.x;
     float ypoint = point.y;
-    float sin = (ypoint-ycenter)/sqrtf(powf((xcenter-xpoint), 2)+powf((ycenter-ypoint), 2));
-    float cos = (xpoint-xcenter)/sqrtf(powf((xcenter-xpoint), 2)+powf((ycenter-ypoint), 2));
-    if (acosf(cos)<3*M_PI/4&&acosf(cos)>M_PI/4&&asinf(sin)<0) {
-        player.check = 2;
-        if (_check == player.check) {
-            if (![player isAnimating]) {
-                player.animationImages = player.imageArrUp;
-                [player startAnimating];
-            }
-        }else{
-            player.animationImages = player.imageArrUp;
-            _check = player.check;
-        }
-    } else if (acosf(cos)<3*M_PI/4&&acosf(cos)>M_PI/4&&asinf(sin)>0){
-        player.check = 3;
-        if (_check == player.check) {
-            if (![player isAnimating]) {
-                player.animationImages = player.imageArrDown;
-                [player startAnimating];
-            }
-        }else{
-            player.animationImages = player.imageArrDown;
-            _check = player.check;
-        }
-        
-    } else if (acosf(cos)<5*M_PI/4&&acosf(cos)>3*M_PI/4){
-        player.check = 4;
-        if (_check == player.check) {
-            if (![player isAnimating]) {
-                player.animationImages = player.imageArrLeft;
-                [player startAnimating];
-            }
-        }else{
-            player.animationImages = player.imageArrLeft;
-            _check = player.check;
-        }
-    } else{
-        player.check = 5;
-        if (_check == player.check) {
-            if (![player isAnimating]) {
-                player.animationImages = player.imageArrRight;
-                [player startAnimating];
-            }
-        }else{
-            player.animationImages = player.imageArrRight;
-            _check = player.check;
-        }
-    }
+    float r = sqrtf(powf((xcenter-xpoint), 2)+powf((ycenter-ypoint), 2));
+    float sin = (ypoint-ycenter)/r;
+    float cos = (xpoint-xcenter)/r;
     //di chuyen nguoi choi
     CGRect newframe = player.frame;
     float x = player.frame.origin.x+3*cos;

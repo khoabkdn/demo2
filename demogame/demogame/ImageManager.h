@@ -11,5 +11,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ImageManager : UIImage
+
+@property (nonatomic) UInt8 *dataPixel;
+-(void)createDataPixel;
 -(NSArray *)cutImageWithM:(int)m xN:(int)n;
 @end

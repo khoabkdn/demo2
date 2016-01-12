@@ -145,6 +145,7 @@
 		AE4D15B01C3B709E000CEA54 /* demogame */ = {
 			isa = PBXGroup;
 			children = (
+				AE54BC841C3F7BDE0011EE52 /* DataManager */,
 				7B4337981C43A47B008632DA /* CollisionControl */,
 				AE54BC851C3F7BF50011EE52 /* MainView */,
 				AE54BC7F1C3F7B8B0011EE52 /* Player */,
@@ -278,7 +279,6 @@
 		AE54BC871C3F7C6F0011EE52 /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				AE54BC841C3F7BDE0011EE52 /* DataManager */,
 				AEC162A51C3FCB80001D3366 /* monster.png */,
 				AE60D5771C3E6C3600E4061C /* btShoot.png */,
 				AE60D5711C3E616F00E4061C /* bulletdown.png */,

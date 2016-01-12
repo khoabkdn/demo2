@@ -13,6 +13,7 @@
 #import "JoystickControl.h"
 #import "JoystickButtonControl.h"
 #import "Monster.h"
+#import "ImageManager.h"
 
 @interface DataManager : NSObject
 

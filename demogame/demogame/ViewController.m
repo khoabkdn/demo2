@@ -31,16 +31,14 @@
     [DataManager shared].arrImageMonster = [imageMonster cutImageWithM:4 xN:4];
     Monster *monster = [[Monster alloc] init];
     [monster createMonster];
-    Monster *monster1 = [[Monster alloc] init];
-    [monster1 createMonster];
-    Monster *monster2 = [[Monster alloc] init];
-    [monster2 createMonster];
-    Monster *monster3 = [[Monster alloc] init];
-    [monster3 createMonster];
-    Monster *monster4 = [[Monster alloc] init];
-    [monster4 createMonster];
-    Monster *monster5 = [[Monster alloc] init];
-    [monster5 createMonster];
+//    Monster *monster1 = [[Monster alloc] init];
+//    [monster1 createMonster];
+//    Monster *monster2 = [[Monster alloc] init];
+//    [monster2 createMonster];
+//    Monster *monster3 = [[Monster alloc] init];
+//    [monster3 createMonster];
+//    Monster *monster4 = [[Monster alloc] init];
+//    [monster4 createMonster];
 }
 
 - (void)didReceiveMemoryWarning {

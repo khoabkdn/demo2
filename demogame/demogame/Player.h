@@ -18,5 +18,6 @@
 @property(strong,nonatomic) NSMutableArray *imageArrDown;
 
 - (void)createPlayer;
+- (void)removePlayer;
 
 @end

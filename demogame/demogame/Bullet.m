@@ -12,12 +12,14 @@
 
 @interface Bullet ()
 
+@property (nonatomic) CGPoint vectoRun;
 @property CADisplayLink *display;
 @property int check;
 
 @end
 
 @implementation Bullet
+
 - (void)createBullet {
     int check = [DataManager shared].player.check;
     UIImageView *player = [DataManager shared].player;
@@ -26,24 +28,39 @@
     int width = player.frame.size.width;
     int height = player.frame.size.height;
     UIView *view = [DataManager shared].view;
-    //huong dan ban
-    if (check == 2) {
-        UIImage *im = [UIImage imageNamed:@"bullet.png"];
-        self.image = im;
-        self.frame = CGRectMake(xplayer+width/2-im.size.width/2, yplayer, im.size.width, im.size.height);
-    }else if (check == 3) {
-        UIImage *im = [UIImage imageNamed:@"bulletdown.png"];
-        self.image = im;
-        self.frame = CGRectMake(xplayer+width/2-im.size.width/2, yplayer+height/2, im.size.width, im.size.height);
-    }else  if (check == 4) {
-        UIImage *im = [UIImage imageNamed:@"bulletleft.png"];
-        self.image = im;
-        self.frame = CGRectMake(xplayer, yplayer+height/3+im.size.height/2, im.size.width, im.size.height);
-    } else{
-        UIImage *im = [UIImage imageNamed:@"bulletright.png"];
-        self.image = im;
-        self.frame = CGRectMake(xplayer+width/2, yplayer+height/3+im.size.height/2, im.size.width, im.size.height);
+    //huong dan ban dau
+    ImageManager *im;
+    switch (check) {//kiem tra huong
+        case 2:
+            im = [[ImageManager alloc] initWithCGImage:[UIImage imageNamed:@"bullet.png"].CGImage];
+            self.image = im;
+            self.frame = CGRectMake(xplayer+width/2-im.size.width/2, yplayer, im.size.width, im.size.height);
+            _vectoRun.x = 0;
+            _vectoRun.y = -5;
+            break;
+        case 3:
+            im = [[ImageManager alloc] initWithCGImage:[UIImage imageNamed:@"bulletdown.png"].CGImage];
+            self.image = im;
+            self.frame = CGRectMake(xplayer+width/2-im.size.width/2, yplayer+height/2, im.size.width, im.size.height);
+            _vectoRun.x = 0;
+            _vectoRun.y = 5;
+            break;
+        case 4:
+            im = [[ImageManager alloc] initWithCGImage:[UIImage imageNamed:@"bulletleft.png"].CGImage];
+            self.image = im;
+            self.frame = CGRectMake(xplayer, yplayer+height/3+im.size.height/2, im.size.width, im.size.height);
+            _vectoRun.x = -5;
+            _vectoRun.y = 0;
+            break;
+        default:
+            im = [[ImageManager alloc] initWithCGImage:[UIImage imageNamed:@"bulletright.png"].CGImage];
+            self.image = im;
+            self.frame = CGRectMake(xplayer+width/2, yplayer+height/3+im.size.height/2, im.size.width, im.size.height);
+            _vectoRun.x = 5;
+            _vectoRun.y = 0;
+            break;
     }
+    [im createDataPixel];
     [view addSubview:self];
     [self startBullet];
 }
@@ -55,59 +72,41 @@
     _display = dl;
 }
 - (void)timeCallBack:(CADisplayLink *)sender {
-    int check = [DataManager shared].player.check;
     CGRect tempFrame = self.frame;
     if (tempFrame.origin.y<=0) {
         [sender removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
         [self removeFromSuperview];
         [[DataManager shared].arrBullet removeObject:self];
     }else{
-        //di chuyen dan theo huong
-        if (!_check) {
-            if (check == 2) {
-                tempFrame.origin.y-=5;
-                self.frame = tempFrame;
-                _check=2;
-            }else if (check == 3) {
-                tempFrame.origin.y+=5;
-                self.frame = tempFrame;
-                _check=3;
-            }else  if (check == 4) {
-                tempFrame.origin.x-=5;
-                self.frame = tempFrame;
-                _check=4;
-            } else{
-                tempFrame.origin.x+=5;
-                self.frame = tempFrame;
-                _check=5;
-            }
-        }else{
-            [self run:tempFrame];
-        }
+        tempFrame.origin.x+=_vectoRun.x;
+        tempFrame.origin.y+=_vectoRun.y;
+        self.frame = tempFrame;
         for (int i = 0; i<[DataManager shared].arrMonster.count; i++) {
             if ([CollisionController checkCollisionObjectA:self andObjectB:[[DataManager shared].arrMonster objectAtIndex:i]]||[CollisionController checkCollisionObjectA:[[DataManager shared].arrMonster objectAtIndex:i] andObjectB:self]) {
-                [sender removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-                [self removeFromSuperview];
-                [[DataManager shared].arrBullet removeObject:self];
-                [[[DataManager shared].arrMonster objectAtIndex:i] removeFromSuperview];
-                [[DataManager shared].arrMonster removeObject:[[DataManager shared].arrMonster objectAtIndex:i]];
+                Monster *temp = [[DataManager shared].arrMonster objectAtIndex:i];
+                int xFront = [CollisionController xpointFrontA:self B:temp];
+                int yFront = [CollisionController ypointFrontA:self B:temp];
+                int xBehind = [CollisionController xpointBehindA:self B:temp];
+                int yBehind = [CollisionController ypointBehindA:self B:temp];
+                for (int i = xFront; i<=xBehind; i++) {
+                    for (int j = yFront; j<=yBehind; j++) {
+                        ImageManager *im = (ImageManager*)self.image;
+                        ImageManager *im1 = (ImageManager*)temp.image;
+                        if ([CollisionController checkAlphaColor:self.image xOfInmage:i-self.frame.origin.x yOfImage:j-self.frame.origin.y data:im.dataPixel]&&
+                            [CollisionController checkAlphaColor:temp.image xOfInmage:i-self.frame.origin.x yOfImage:j-self.frame.origin.y data:im1.dataPixel]) {
+                            [sender removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+                            [self removeBullet];
+                            [temp removeMonster];
+                        }
+                    }
+                }
+                
             }
         }
     }
 }
-- (void)run:(CGRect)tempFrame {
-    if (_check == 2) {
-        tempFrame.origin.y-=5;
-        self.frame = tempFrame;
-    }else if (_check == 3) {
-        tempFrame.origin.y+=5;
-        self.frame = tempFrame;
-    }else  if (_check == 4) {
-        tempFrame.origin.x-=5;
-        self.frame = tempFrame;
-    } else{
-        tempFrame.origin.x+=5;
-        self.frame = tempFrame;
-    }
+- (void)removeBullet{
+    [self removeFromSuperview];
+    [[DataManager shared].arrBullet removeObject:self];
 }
 @end
