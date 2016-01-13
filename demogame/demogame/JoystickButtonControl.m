@@ -24,20 +24,19 @@
 @implementation JoystickButtonControl
 
 - (void)createJoystickButton {
-    UIImage *im = self.image;
-    self.frame = CGRectMake([DataManager shared].joystick.center.x-im.size.width/2, [DataManager shared].joystick.center.y-im.size.height/2, im.size.width, im.size.height);
-    self.alpha = 0.65;
-    [[DataManager shared].view addSubview:self];
-    [DataManager shared].player.animationDuration = 1;
     _view = [DataManager shared].view;
     _joystick = [DataManager shared].joystick;
     _player = [DataManager shared].player;
+    UIImage *im = self.image;
+    self.frame = CGRectMake(_joystick.center.x-im.size.width/2, _joystick.center.y-im.size.height/2, im.size.width, im.size.height);
+    self.alpha = 0.65;
+    [_view addSubview:self];
+    _player.animationDuration = 1;
     [self joystickLongPressGestureRecognizer];
 }
 
 - (void)joystickLongPressGestureRecognizer {
     //su kien nhan
-    
     UILongPressGestureRecognizer *joystickRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleJoystickGame:)];
     self.userInteractionEnabled = true;
     joystickRecognizer.minimumPressDuration = 0.01;
@@ -45,9 +44,26 @@
 }
 
 - (void)handleJoystickGame:(UILongPressGestureRecognizer *)recognizer {
+    
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-        [DataManager shared].player.animationImages = [DataManager shared].player.imageArrUp;
-        [[DataManager shared].player startAnimating];
+        switch (_player.check) {
+            case 2:
+                _player.animationImages = _player.imageArrUp;
+                [_player startAnimating];
+                break;
+            case 3:
+                _player.animationImages = _player.imageArrDown;
+                [_player startAnimating];
+                break;
+            case 4:
+                _player.animationImages = _player.imageArrLeft;
+                [_player startAnimating];
+                break;
+            default:
+                _player.animationImages = _player.imageArrRight;
+                [_player startAnimating];
+                break;
+        }
     }
     if (recognizer.state == UIGestureRecognizerStateChanged) {
         CGPoint point = [recognizer locationInView:_view];
@@ -59,7 +75,7 @@
         _sin = (ypoint-ycenter)/r;
         _cos = (xpoint-xcenter)/r;
         float alpha = acosf(_cos)*180/M_PI;
-        if (sin<=0) {
+        if (_sin<=0) {
             alpha = 360-alpha;
         }
         if (alpha<315&&alpha>=225) {
@@ -72,7 +88,7 @@
         } else{
             _check = 5;
         }
-        if ((_check != _player.check)) {
+        if (_check != _player.check) {
             _player.check = _check;
             switch (_check) {
                 case 2:
@@ -102,20 +118,24 @@
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         [_timer invalidate];
         _timer = nil;
-        [[DataManager shared].player stopAnimating];
+        [_player stopAnimating];
+        CGRect newFrame = self.frame;
+        newFrame.origin.x = _joystick.center.x-self.frame.size.width/2;
+        newFrame.origin.y = _joystick.center.y-self.frame.size.height/2;
+        self.frame = newFrame;
         //set image when stop.
-        switch ([DataManager shared].player.check) {
+        switch (_player.check) {
             case 2:
-                [DataManager shared].player.image = [[DataManager shared].arrImagePlayer objectAtIndex:12];
+                _player.image = [_player.imageArrUp objectAtIndex:0];
                 break;
             case 3:
-                [DataManager shared].player.image = [[DataManager shared].arrImagePlayer objectAtIndex:0];
+                _player.image = [_player.imageArrDown objectAtIndex:0];
                 break;
             case 4:
-                [DataManager shared].player.image = [[DataManager shared].arrImagePlayer objectAtIndex:4];
+                _player.image = [_player.imageArrLeft objectAtIndex:0];
                 break;
             default:
-                [DataManager shared].player.image = [[DataManager shared].arrImagePlayer objectAtIndex:8];
+                _player.image = [_player.imageArrRight objectAtIndex:0];
                 break;
         }
     }

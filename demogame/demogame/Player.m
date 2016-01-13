@@ -13,7 +13,7 @@
 
 - (void)createPlayer {
     UIImage *im = [[DataManager shared].arrImagePlayer objectAtIndex:12];
-    _check = 2;
+    _check = 2;//huong ban dau
     self.image = im;
     self.frame = CGRectMake([DataManager shared].view.frame.size.width/2-im.size.width/2, [DataManager shared].view.frame.size.height-im.size.height, im.size.width, im.size.height);
     [[DataManager shared].view addSubview:self];

@@ -16,7 +16,10 @@
 @property int distanceMove;
 @property (strong,nonatomic)CADisplayLink *display;
 @property BOOL checkWay;
-
+@property(strong,nonatomic) NSMutableArray *imageArrLeft;
+@property(strong,nonatomic) NSMutableArray *imageArrRight;
+@property(strong,nonatomic) NSMutableArray *imageArrUp;
+@property(strong,nonatomic) NSMutableArray *imageArrDown;
 
 - (void)createMonster;
 - (void)removeMonster;

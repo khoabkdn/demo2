@@ -11,45 +11,65 @@
 #import "CollisionController.h"
 
 @implementation Monster
-
 - (void)createMonster {
     UIImage *im = [[DataManager shared].arrImageMonster objectAtIndex:0];
     self.image = im;
+    _imageArrDown = [[NSMutableArray alloc] init];
+    _imageArrUp = [[NSMutableArray alloc] init];
+    _imageArrLeft = [[NSMutableArray alloc] init];
+    _imageArrRight = [[NSMutableArray alloc] init];
+    for (int i = 0; i<4; i++) {
+        [_imageArrDown addObject:[[DataManager shared].arrImageMonster objectAtIndex:i]];
+    }
+    for (int i = 12; i<16; i++) {
+        [_imageArrUp addObject:[[DataManager shared].arrImageMonster objectAtIndex:i]];
+    }
+    for (int i = 4; i<8; i++) {
+        [_imageArrLeft addObject:[[DataManager shared].arrImageMonster objectAtIndex:i]];
+    }
+    for (int i = 8; i<12; i++) {
+        [_imageArrRight addObject:[[DataManager shared].arrImageMonster objectAtIndex:i]];
+    }
     self.distanceMove = 80+arc4random()%40;
-    int wView = [DataManager shared].view.frame.size.width;
-    int hView = [DataManager shared].view.frame.size.height;
-    int wIm = im.size.width;
-    int hIm = im.size.height;
-    int xstart = arc4random()%300;
-    int ystart = arc4random()%600;
+    int xstart = 120+arc4random()%135;
+    int ystart = 120+arc4random()%427;
     _pointStart.origin.x = xstart;
     _pointStart.origin.y = ystart;
-    if (xstart>=0&&ystart>=0&&xstart<_distanceMove&&ystart<_distanceMove) {
-        _way = arc4random()%2;
-    }else if (xstart>=0&&xstart<_distanceMove&&ystart>=hView-hIm&&ystart<=hView){
-        _way = 3*arc4random()%2;
-    }else if (xstart>=wView-wIm&&xstart<=wView&&ystart>=0&&ystart<_distanceMove){
-        _way = 1+arc4random()%2;
-    }else if (xstart>=wView-wIm&&xstart<=wView&&ystart>=hView-hIm&&ystart<=hView){
-        _way = 2+arc4random()%2;
-    }else{
-        _way = arc4random()%4;
-    }
+    _way = arc4random()%4;
     self.frame = CGRectMake(_pointStart.origin.x, _pointStart.origin.y, im.size.width, im.size.height);
     [[DataManager shared].view addSubview:self];
     _checkWay = true;
+    self.animationDuration = 1;
+    switch (_way) {
+        case 0:
+            self.animationImages = _imageArrRight;
+            [self startAnimating];
+            break;
+        case 1:
+            self.animationImages = _imageArrDown;
+            [self startAnimating];
+            break;
+        case 2:
+            self.animationImages = _imageArrLeft;
+            [self startAnimating];
+            break;
+        default:
+            self.animationImages = _imageArrUp;
+            [self startAnimating];
+            break;
+    }
     [self startMonster];
     [[DataManager shared].arrMonster addObject:self];
 }
 
-- (void)startMonster{
+- (void)startMonster {
     CADisplayLink *dl = [CADisplayLink displayLinkWithTarget:self selector:@selector(timeCallBack:)];
     dl.frameInterval = 1;
     [dl addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     _display = dl;
 }
 
-- (void)timeCallBack:(CADisplayLink *)sender{
+- (void)timeCallBack:(CADisplayLink *)sender {
     CGRect newFrame = self.frame;
     switch (_way) {
         case 0:
@@ -58,6 +78,8 @@
                     newFrame.origin.x+=1;
                 }
                 if (newFrame.origin.x == _pointStart.origin.x + _distanceMove){
+                    self.animationImages = _imageArrLeft;
+                    [self startAnimating];
                     _checkWay = false;
                 }
             }else{
@@ -65,6 +87,8 @@
                     newFrame.origin.x-=1;
                 }
                 if (newFrame.origin.x == _pointStart.origin.x) {
+                    self.animationImages = _imageArrRight;
+                    [self startAnimating];
                     _checkWay = true;
                 }
             }
@@ -75,6 +99,8 @@
                     newFrame.origin.y+=1;
                 }
                 if (newFrame.origin.y == _pointStart.origin.y + _distanceMove){
+                    self.animationImages = _imageArrUp;
+                    [self startAnimating];
                     _checkWay = false;
                 }
             }else{
@@ -82,6 +108,8 @@
                     newFrame.origin.y-=1;
                 }
                 if (newFrame.origin.y == _pointStart.origin.y) {
+                    self.animationImages = _imageArrDown;
+                    [self startAnimating];
                     _checkWay = true;
                 }
             }
@@ -92,6 +120,8 @@
                     newFrame.origin.x-=1;
                 }
                 if (newFrame.origin.x == _pointStart.origin.x - _distanceMove){
+                    self.animationImages = _imageArrRight;
+                    [self startAnimating];
                     _checkWay = false;
                 }
             }else{
@@ -99,6 +129,8 @@
                     newFrame.origin.x+=1;
                 }
                 if (newFrame.origin.x == _pointStart.origin.x) {
+                    self.animationImages = _imageArrLeft;
+                    [self startAnimating];
                     _checkWay = true;
                 }
             }
@@ -109,6 +141,8 @@
                     newFrame.origin.y-=1;
                 }
                 if (newFrame.origin.y == _pointStart.origin.y - _distanceMove){
+                    self.animationImages = _imageArrDown;
+                    [self startAnimating];
                     _checkWay = false;
                 }
             }else{
@@ -116,6 +150,8 @@
                     newFrame.origin.y+=1;
                 }
                 if (newFrame.origin.y == _pointStart.origin.y) {
+                    self.animationImages = _imageArrUp;
+                    [self startAnimating];
                     _checkWay = true;
                 }
             }
@@ -124,7 +160,7 @@
     self.frame = newFrame;
 }
 
-- (void)removeMonster{
+- (void)removeMonster {
     [self removeFromSuperview];
     [[DataManager shared].arrMonster removeObject:self];
 }
